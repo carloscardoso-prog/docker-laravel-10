@@ -1,0 +1,30 @@
+[0;1;32m●[0m docker.service - Docker Application Container Engine
+     Loaded: loaded (]8;;file://carlos-pc/usr/lib/systemd/system/docker.service/usr/lib/systemd/system/docker.service]8;;; [0;1;32menabled[0m; preset: [0;1;38;5;185mdisabled[0m)
+    Drop-In: /usr/lib/systemd/system/service.d
+             └─]8;;file://carlos-pc/usr/lib/systemd/system/service.d/10-timeout-abort.conf10-timeout-abort.conf]8;;
+     Active: [0;1;32mactive (running)[0m since Wed 2023-08-23 23:45:42 -03; 12min ago
+TriggeredBy: [0;1;32m●[0m docker.socket
+       Docs: ]8;;https://docs.docker.comhttps://docs.docker.com]8;;
+   Main PID: 21830 (dockerd)
+      Tasks: 68
+     Memory: 88.1M
+        CPU: 3.864s
+     CGroup: /system.slice/docker.service
+             ├─[0;38;5;245m21830 /usr/bin/dockerd -H fd:// --containerd=/run/containerd/containerd.sock[0m
+             ├─[0;38;5;245m25798 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 3388 -container-ip 172.18.0.2 -container-port 3306[0m
+             ├─[0;38;5;245m25805 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 3388 -container-ip 172.18.0.2 -container-port 3306[0m
+             ├─[0;38;5;245m25865 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8989 -container-ip 172.18.0.4 -container-port 80[0m
+             ├─[0;38;5;245m25877 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 8989 -container-ip 172.18.0.4 -container-port 80[0m
+             ├─[0;38;5;245m26036 /usr/bin/docker-proxy -proto tcp -host-ip 0.0.0.0 -host-port 8899 -container-ip 172.18.0.5 -container-port 80[0m
+             └─[0;38;5;245m26042 /usr/bin/docker-proxy -proto tcp -host-ip :: -host-port 8899 -container-ip 172.18.0.5 -container-port 80[0m
+
+Aug 23 23:53:00 carlos-pc dockerd[21830]: time="2023-08-23T23:53:00.785582565-03:00" level=warning msg="no trace recorder found, skipping"
+Aug 23 23:53:01 carlos-pc dockerd[21830]: time="2023-08-23T23:53:01.058681224-03:00" level=info msg="Firewalld: interface br-f6590fee3f4d already part of docker zone, returning"
+Aug 23 23:53:01 carlos-pc dockerd[21830]: time="2023-08-23T23:53:01.555359214-03:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers: [nameserver 8.8.8.8 nameserver 8.8.4.4]"
+Aug 23 23:53:01 carlos-pc dockerd[21830]: time="2023-08-23T23:53:01.555405176-03:00" level=info msg="IPv6 enabled; Adding default IPv6 external servers: [nameserver 2001:4860:4860::8888 nameserver 2001:4860:4860::8844]"
+Aug 23 23:53:01 carlos-pc dockerd[21830]: time="2023-08-23T23:53:01.643228229-03:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers: [nameserver 8.8.8.8 nameserver 8.8.4.4]"
+Aug 23 23:53:01 carlos-pc dockerd[21830]: time="2023-08-23T23:53:01.643269405-03:00" level=info msg="IPv6 enabled; Adding default IPv6 external servers: [nameserver 2001:4860:4860::8888 nameserver 2001:4860:4860::8844]"
+Aug 23 23:53:01 carlos-pc dockerd[21830]: time="2023-08-23T23:53:01.801159717-03:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers: [nameserver 8.8.8.8 nameserver 8.8.4.4]"
+Aug 23 23:53:01 carlos-pc dockerd[21830]: time="2023-08-23T23:53:01.801187440-03:00" level=info msg="IPv6 enabled; Adding default IPv6 external servers: [nameserver 2001:4860:4860::8888 nameserver 2001:4860:4860::8844]"
+Aug 23 23:53:02 carlos-pc dockerd[21830]: time="2023-08-23T23:53:02.131124802-03:00" level=info msg="No non-localhost DNS nameservers are left in resolv.conf. Using default external servers: [nameserver 8.8.8.8 nameserver 8.8.4.4]"
+Aug 23 23:53:02 carlos-pc dockerd[21830]: time="2023-08-23T23:53:02.131153112-03:00" level=info msg="IPv6 enabled; Adding default IPv6 external servers: [nameserver 2001:4860:4860::8888 nameserver 2001:4860:4860::8844]"
