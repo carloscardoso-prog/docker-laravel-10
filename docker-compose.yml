@@ -25,6 +25,7 @@ services:
             - sistema-getao-network
      # db mysql ${DB_DATABASE} //Busca do arquivo .env
     mysql:
+        user: mysql
         container_name: banco-mysql
         image: mysql:5.7.22
         restart: unless-stopped
@@ -33,9 +34,9 @@ services:
             MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
             MYSQL_ROOT_USER: ${DB_USERNAME}
             MYSQL_PASSWORD: ${DB_PASSWORD}
-            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_USER: ${DB_USERNAME}        
         volumes:
-            - ./.docker/mysql/dbdata:/var/lib/mysql
+            - /var/lib/mysql
         ports:
             - "3388:3306"
         networks:
