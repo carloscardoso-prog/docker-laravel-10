@@ -23,6 +23,6 @@ class ProdutosController extends Controller
     }
 
     public function update(Request $request){
-
+        
     }
 }
