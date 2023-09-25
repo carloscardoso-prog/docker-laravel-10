@@ -16,11 +16,11 @@ class Produto extends Model
     protected $guarded = [
         'tipo_produto'
     ];
-
+ 
     public function getProdutosPesquisarIndex(string $search = ''){
         $produto = $this->where(function ($query) use ($search) {
             if ($search) {
-                $query->where('nome_produto', $search);
+                $query->where('nome_produto', "'".$search."'");
                 $query->orWhere('nome_produto', 'LIKE', "%{$search}%");
             }
         })->get();

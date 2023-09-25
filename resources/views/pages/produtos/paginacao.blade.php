@@ -33,9 +33,8 @@
                         <td>{{$produto->nome_produto}}</td>
                         <td>{{ 'R$ '. number_format($produto->valor, 2, ',', '.')}}</td>
                         <td>
-                            <a href="" class="btn btn-success"><i class="fa-solid fa-bars"></i></a>
-                            <a href="" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
-                            <a href="" class="btn btn-danger"><i class="fa-solid fa-circle-minus"></i></a>
+                            <a href="{{ route('produto.update') }}" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a>
+                            <a href="{{ route('produto.delete') }}" class="btn btn-danger"><i class="fa-solid fa-circle-minus"></i></a>
                         </td>
                     </tr>
                 @endforeach
