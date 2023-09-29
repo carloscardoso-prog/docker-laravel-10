@@ -19,7 +19,7 @@ class ProdutosController extends Controller
     }
 
     public function delete(Request $request){
-        
+        return response()->json(['success' => true]);
     }
 
     public function update(Request $request){

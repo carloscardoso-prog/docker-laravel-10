@@ -34,7 +34,8 @@
                         <td>{{ 'R$ '. number_format($produto->valor, 2, ',', '.')}}</td>
                         <td>
                             {{-- <a href="{{ /** route('produto.update') **/ }}" class="btn btn-primary"><i class="fa-regular fa-pen-to-square"></i></a> --}}
-                            <a href="{{ route('produto.delete') }}" class="btn btn-danger"><i class="fa-solid fa-circle-minus"></i></a>
+                            <meta name="csrf-token" content="{{ csrf_token() }}"/>
+                            <a onclick="deleteRegistroPaginacao('{{route('produto.delete')}}', {{ $produto->id }} )" class="btn btn-danger"><i class="fa-solid fa-circle-minus"></i></a>
                         </td>
                     </tr>
                 @endforeach
