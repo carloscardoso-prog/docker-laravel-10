@@ -1,6 +1,6 @@
 function deleteRegistroPaginacao(rotaUrl, idDoRegistro){
     // console.log(rotaUrl);
-    // console.log(idDoRegistro);
+    // console.log(idDoRegistro);S
     if(confirm('Deseja remover o produto de ID ' + idDoRegistro)){
         $.ajax({
             url: rotaUrl,
@@ -17,7 +17,12 @@ function deleteRegistroPaginacao(rotaUrl, idDoRegistro){
             }
         }).done(function(data){
             $.unblockUI();
-            console.log(data);
+
+            if(data.success == true){
+                window.location.reload();
+            }else{
+                alert("Não foi possível remover os dados.");
+            }
         }).fail(function (data) {
             $.unblockUI();
             alert("Não foi possível buscar os dados");
