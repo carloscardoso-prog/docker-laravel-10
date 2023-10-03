@@ -12,7 +12,7 @@ class Componentes extends Model
     public function formatacaoMascaraDinheiroDecimal($valorParaFormatar)
     {
         $tamanho = strlen($valorParaFormatar);
-        $dadoso = str_replace(',', '.', $valorParaFormatar);
+        $dados = str_replace(',', '.', $valorParaFormatar);
         if ($tamanho <= 6){
             $dados = str_replace(',', '.', $valorParaFormatar);
         } else {
