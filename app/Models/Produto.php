@@ -10,11 +10,7 @@ class Produto extends Model
     use HasFactory;
 
     protected $fillable = [
-        'nome_produto', 'valor'
-    ];
-
-    protected $guarded = [
-        'tipo_produto'
+        'nome_produto', 'valor', 'tipo_produto'
     ];
  
     public function getProdutosPesquisarIndex(string $search = ''){
