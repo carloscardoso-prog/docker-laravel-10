@@ -6,6 +6,7 @@ use App\Http\Requests\FormRequestProduto;
 use App\Models\Componentes;
 use Illuminate\Http\Request;
 use App\Models\Produto;
+use Brian2694\Toastr\Facades\Toastr;
 
 class ProdutosController extends Controller
 {
@@ -36,9 +37,29 @@ class ProdutosController extends Controller
             $objetoCriar['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($objetoCriar['valor']);
             Produto::create($objetoCriar);
 
+            Toastr::success('Gravado com sucesso');
             return redirect()->route('produto.index');
         }
 
         return view('pages.produtos.create');
+    }
+ 
+    public function atualizarProduto(FormRequestProduto $request, $id){
+
+        if($request->method() == "PUT"){
+            $objetoAtualizar = $request->all();
+            $componentes = new Componentes();
+
+            $objetoAtualizar['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($objetoAtualizar['valor']);
+            
+            $buscaRegistro = Produto::find($id);
+            $buscaRegistro->update($objetoAtualizar);
+
+            return redirect()->route('produto.index');
+        }
+        
+        $findProduto = Produto::where('id', '=', $id)->first();
+
+        return view('pages.produtos.atualiza', compact('findProduto'));
     }
 }
