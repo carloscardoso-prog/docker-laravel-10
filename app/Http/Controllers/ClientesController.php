@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\FormRequestClientes;
 use App\Models\Cliente;
 use App\Models\Componentes;
 use Brian2694\Toastr\Facades\Toastr;
@@ -14,26 +15,24 @@ class ClientesController extends Controller
         $this->cliente = $cliente;
     }
 
-    public function index(Request $request){
+    public function index(FormRequestClientes $request){
         $parametroBusca = $request->pesquisar;
         $listarCliente = $this->cliente->getClientesPesquisarIndex(search: $parametroBusca ?? '');
         return view('pages.clientes.paginacao', compact('listarCliente'));
     }
 
-    public function delete(Request $request){
+    public function delete(FormRequestClientes $request){
         $id = $request->id;
         $buscaRegistro = Cliente::find($id);
         $buscaRegistro->delete();
         return response()->json(['success' => true]);
     }
 
-    public function cadastrarCliente(Request $request){
+    public function cadastrarCliente(FormRequestClientes $request){
         if ($request->method() == "POST") {
 
             $objetoCriar = $request->all();
-            $componentes = new Componentes();
-            
-            $objetoCriar['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($objetoCriar['valor']);
+
             Cliente::create($objetoCriar);
 
             Toastr::success('Gravado com sucesso');
@@ -43,13 +42,10 @@ class ClientesController extends Controller
         return view('pages.clientes.create');
     }
  
-    public function atualizarCliente(Request $request, $id){
+    public function atualizarCliente(FormRequestClientes $request, $id){
 
         if($request->method() == "PUT"){
             $objetoAtualizar = $request->all();
-            $componentes = new Componentes();
-
-            $objetoAtualizar['valor'] = $componentes->formatacaoMascaraDinheiroDecimal($objetoAtualizar['valor']);
             
             $buscaRegistro = Cliente::find($id);
             $buscaRegistro->update($objetoAtualizar);

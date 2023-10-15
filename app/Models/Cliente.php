@@ -14,8 +14,18 @@ class Cliente extends Model
         'email_cliente',
         'endereco_cliente',
         'logradouro_cliente',
-        'cep_cliente',
+        'cep',
         'bairro_cliente',
     ];
 
+    public function getClientesPesquisarIndex(string $search = ''){
+        $cliente = $this->where(function($query) use ($search) {
+            if($search) {
+                $query->where('nome_cliente', "'". $search ."'");
+                $query->orWhere('nome_cliente', 'LIKE', "%{$search}%");
+            }
+        })->get();
+
+        return $cliente;
+    }
 }

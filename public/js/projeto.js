@@ -31,3 +31,27 @@ function deleteRegistroPaginacao(rotaUrl, idDoRegistro){
 }
 
 $('#mascara-valor').mask('#.##0,00', {reverse: true});
+
+$("#cep").blur(function(){
+    var cep = $(this).val().replace(/\D/g, '');
+    if(cep != "") {
+        var validaCep = /^[0-9]{8}$/;
+        if(validaCep.test(cep)) {
+            $("#logradouro").val(" ");
+            $("#bairro").val(" ");
+            $("#cidade").val(" ");
+            $("#uf").val(" ");
+        }
+        $.getJSON("https://viacep.com.br/ws/" + cep + "/json/?callback=?", function (dados){
+            if (!("erro" in dados)) {
+                $("#logradouro").val(dados.logradouro.toUpperCase());
+                $("#bairro").val(dados.bairro.toUpperCase());
+                $("#cidade").val(dados.cidade.toUpperCase());
+                $("#uf").val(dados.uf.toUpperCase());
+            }
+            else {
+                alert("CEP não encontrado de forma automatizada, digite manualmente seu endereço ou tente novamente.")
+            }
+        });
+    }
+});
