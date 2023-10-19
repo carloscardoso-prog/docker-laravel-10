@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FormRequestVenda extends FormRequest
+class FormRequestUsuario extends FormRequest
 {
     public function authorize(): bool
     {
@@ -14,11 +14,12 @@ class FormRequestVenda extends FormRequest
     public function rules(): array
     {
         $request = [];
-        if($this->method == "POST" || $this->method == "PUT"){
+        if($this->method() == "POST" || $this->method() == "PUT"){
             $request = [
-                'cliente_id' => 'required ',
-                'produto_id' => 'required'
-            ];   
+                'name' => 'required',
+                'email' => 'required',
+                'password' => 'required'
+            ];
         }
         return $request;
     }

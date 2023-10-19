@@ -23,6 +23,7 @@
                             <th>Numero da Venda</th>
                             <th>Cliente</th>
                             <th>Produto</th>
+                            <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -31,6 +32,11 @@
                                 <td>{{ $venda->numero_da_venda }}</td>
                                 <td>{{ $venda->cliente->nome_cliente }}</td>
                                 <td>{{ $venda->produto->nome_produto }}</td>
+                                <td>
+                                    <a class="btn btn-primary" href="{{ route('enviaComprovantePorEmail.venda', $venda->id) }}">
+                                        <i class="fa-solid fa-envelope"></i>
+                                    </a>
+                                </td>
                             </tr>
                         @endforeach
                     </tbody>

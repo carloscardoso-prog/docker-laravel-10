@@ -52,7 +52,7 @@
 <div class="offcanvas-body d-md-flex flex-column p-0 pt-lg-3 overflow-y-auto">
     <ul class="nav flex-column">
       <li class="nav-item">
-        <a class="nav-link d-flex align-items-center gap-2 active" aria-current="page" href="{{ route('produto.index') }}">
+        <a class="nav-link d-flex align-items-center gap-2" aria-current="page" href="{{ route('dashboard.index') }}">
           <svg class="bi"><use xlink:href="#house-fill"/></svg>
           Menu
         </a>
@@ -81,9 +81,9 @@
 
     <ul class="nav flex-column mb-auto">
       <li class="nav-item">
-        <a class="nav-link d-flex align-items-center gap-2" href="#">
-          <svg class="bi"><use xlink:href="#gear-wide-connected"/></svg>
-          Configurações
+        <a class="nav-link d-flex align-items-center gap-2" href="{{ route('usuario.index') }}">
+          <i class="fa-regular fa-user"></i>
+          Usuário
         </a>
       </li>
       <li class="nav-item">

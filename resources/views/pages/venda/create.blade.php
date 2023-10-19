@@ -7,27 +7,30 @@
             <h1 class="h2">Criar nova Venda</h1>
         </div>
         <div class="mb-3">
-          <label class="form-label">Nome do Cliente</label>
-          <input type="text" value="{{ @old('nome_cliente') }}" name="nome_cliente" class="form-control @error('nome_cliente') is-invalid @enderror">
-          @if ($errors->has('nome_cliente'))
-            <div class="invalid-feedback"> {{ $errors->first('nome_cliente') }} </div>
+          <label class="form-label">Numeração</label>
+          <input type="text" disabled value="{{ $numeracaoVenda }}" name="numero_da_venda" class="form-control @error('numero_da_venda') is-invalid @enderror">
+          @if ($errors->has('numero_da_venda'))
+            <div class="invalid-feedback"> {{ $errors->first('numero_da_venda') }} </div>
           @endif
         </div>
         <div class="mb-3">
-          <label class="form-label">E-mail</label>
-          <input type="email" value="{{ @old('email_cliente') }}" name="email_cliente" class="form-control @error('email_cliente') is-invalid @enderror">
-          @if ($errors->has('email_cliente'))
-            <div class="invalid-feedback"> {{ $errors->first('email_cliente') }} </div>
-          @endif
+          <label for="form-label">Cliente</label>
+          <select name="cliente_id" class="form-select">
+            <option hidden>Selecionar Cliente</option>
+            @foreach($clienteDados as $cliente)
+              <option value="{{ $cliente->id }}">{{ $cliente->nome_cliente }}</option>
+            @endforeach
+          </select>
         </div>
         <div class="mb-3">
-          <label class="form-label">CEP</label>
-          <input id="cep" type="text" value="{{ @old('cep') }}" name="cep" class="form-control @error('cep') is-invalid @enderror">
-          @if ($errors->has('cep'))
-            <div class="invalid-feedback"> {{ $errors->first('cep') }} </div>
-          @endif
+          <label for="form-label">Produto</label>
+          <select name="produto_id" class="form-select">
+            <option>Selecionar Produto</option>
+            @foreach ($produtoDados as $produto)
+              <option value="{{ $produto->id }}">{{ $produto->nome_produto }}</option>
+            @endforeach
+          </select>
         </div>
-        
         <button type="submit" class="btn btn-success">Cadastrar</button>      
     </form>
 @endsection
